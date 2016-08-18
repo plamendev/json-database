@@ -8,6 +8,7 @@ Thank you!
 /// USAGE
 
 + Initialise class
+
 $db = new Db('users.db');
 
 + Insert record

@@ -37,7 +37,11 @@ class Db {
 			{
 				foreach( $this->where as $key => $value )
 				{
-					if( $row[ $key ] == $value ) $result[] = $row;
+					if( isset( $row[ $key ] ) && 
+							$row[ $key ] == $value )
+					{
+						$result[] = $row;	
+					}
 				}
 			}
 			
@@ -57,7 +61,11 @@ class Db {
 			{
 				foreach( $this->like as $key => $value )
 				{
-					if( strpos( $row[ $key ], $value ) != FALSE ) $result[] = $row;
+					if( isset( $row[ $key ] ) && 
+							strpos( $row[ $key ], $value ) != FALSE )
+					{
+						$result[] = $row;
+					}
 				}
 			}
 			
@@ -85,6 +93,12 @@ class Db {
 		{
 			unset( $this->dataArr[ $key ][ '_id' ] );
 		}
+	}
+	
+	private function write_db()
+	{
+		$json = json_encode( $this->dataArr );
+		@file_put_contents( $this->db_file, $json );
 	}
 	
 	/***
@@ -122,13 +136,12 @@ class Db {
 	{
 		$this->dataArr[] = $data;
 		$this->do_indexing();
-		$json = json_encode( $this->dataArr );
-		@file_put_contents( $this->db_file, $json );
+		$this->write_db();
 	}
 	
 	public function update( $data )
 	{
-		$rows = $this->get(); // First query, will reset WHERE and LIKE
+		$rows = $this->get(); // First query will reset WHERE and LIKE filters
 		$rows_full = $this->get();
 		
 		foreach( $rows as $row )
@@ -148,8 +161,28 @@ class Db {
 		}
 		
 		$this->dataArr = $rows_full;
-		$json = json_encode( $this->dataArr );
-		@file_put_contents( $this->db_file, $json );
+		$this->write_db();
+	}
+	
+	public function delete()
+	{
+		$rows = $this->get(); // First query will reset WHERE and LIKE filters
+		$rows_full = $this->get();
+		
+		foreach( $rows as $row )
+		{
+			foreach( $rows_full as $key => $value )
+			{
+				if( $rows_full[ $key ][ '_id' ] == $row[ '_id' ] )
+				{
+					unset( $rows_full[ $key ] );
+				}
+			}
+		}
+		
+		$this->dataArr = $rows_full;
+		$this->write_db();
+		
 	}
 
 

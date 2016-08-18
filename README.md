@@ -1,8 +1,7 @@
 # json-flat
-An attempt to create flat-file database around JSON, inspired by CodeIgniter's ActiveRecord implementation.
-I have used this for a personal project and it works just fine.
+An attempt to create flat-file database solution around JSON, inspired by CodeIgniter's ActiveRecord implementation. It is suitable for small web sites.
 
-If you like the idea please feel free to contribute to development!
+If you like the idea please contribute to development by forking this project.
 Thank you!
 
 /// USAGE

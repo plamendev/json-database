@@ -29,6 +29,11 @@ foreach($users as $user)
 $db->where('name', 'John Doe');
 $db->update( array('email' => 'johndoe@gmail.com') );
 
++ Delete record(s)
+
+$db->where('name', 'John Doe');
+$db->delete();
+
 
 /// FUTURE DEVELOPMENT
 + Full CRUD implementation

@@ -1,2 +1,2 @@
 # json-flat
-An attempt to create flat-file database around JSON with ActiveRecord-like capabilities.
+An attempt to create flat-file database around JSON with ActiveRecord-like capabilities in PHP.

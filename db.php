@@ -2,6 +2,7 @@
 /***
 /*
 /* Basic JSON database class
+/* Version 0.2
 /* (c) 2016 by Plamen Kozhuharov
 /*
 /*/

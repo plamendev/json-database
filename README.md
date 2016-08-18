@@ -8,3 +8,7 @@ Thank you!
 ///
 
 Set up your preferred database filename by giving value to $db_file.
+
+Future development:
++ Full CRUD implementation
++ Sorting (order_by etc.)

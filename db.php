@@ -9,7 +9,7 @@
 
 class Db {
 
-	var $db_file = 'patients.db',
+	var $db_file = 'json.db',
 	$dataArr = array(),
 	$sizeof,
 	$num_rows = 0,
@@ -17,8 +17,10 @@ class Db {
 	$like = array(),
 	$pointer;
 
-	function __construct()
+	function __construct( $db_file = '' )
 	{
+		if( $db_file != '' ) $this->db_file = $db_file;
+		
 		$this->get();
 		
 		$this->do_indexing();

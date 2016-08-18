@@ -103,7 +103,7 @@ class Db {
 	
 	/***
 	/*
-	/*		CLASS INTERFACE METHODS
+	/*		PUBLIC METHODS
 	/*
 	/*/
 	

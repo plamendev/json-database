@@ -23,6 +23,12 @@ foreach($users as $user)
   echo $user['name'].', '.$user['email'].'<br>';
 }
 
++ Fetch selected records and sort by a given field in an ascendant ('ASC') or descendant ('DESC') manner.
+ 
+$db->where('name', 'John');
+$db->order_by('DOB', 'DESC');
+$db->get();
+
 + Update record
 
 $db->where('name', 'John Doe');

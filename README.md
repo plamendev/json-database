@@ -42,4 +42,5 @@ $db->delete();
 
 /// FUTURE DEVELOPMENT
 + Full CRUD implementation
-+ Sorting (order_by etc.)
++ Schema definition
++ Optimize speed and file manipulation

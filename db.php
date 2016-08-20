@@ -15,6 +15,7 @@ class Db {
 	$num_rows = 0,
 	$where = array(),
 	$like = array(),
+	$order_by = array(),
 	$pointer;
 
 	function __construct( $db_file = '' )
@@ -74,6 +75,27 @@ class Db {
 		}
 	}
 	
+	private function do_order_by()
+	{
+		if( ! empty( $this->order_by ) )
+		{
+			$sorting = array();
+			foreach( $this->dataArr as $key => $row )
+			{
+				$sorting[ $key ] = $row[ $this->order_by[ 'key' ] ];
+			}
+			
+			switch( $this->order_by[ 'order' ] )
+			{
+				case 'ASC': $order = SORT_ASC; break;
+				case 'DESC': $order = SORT_DESC; break;
+			}
+			array_multisort( $sorting, $order, $this->dataArr );
+			
+			$this->order_by = array();
+		}
+	}
+	
 	private function do_indexing()
 	{
 		if( ! empty( $this->dataArr ) )
@@ -116,6 +138,12 @@ class Db {
 	{
 		$this->like[$key] = $value;
 	}
+	
+	public function order_by( $key, $order = 'DESC' )
+	{
+		$this->order_by[ 'key' ] = $key;
+		$this->order_by[ 'order' ] = $order;
+	}
 
 	public function get()
 	{
@@ -124,6 +152,7 @@ class Db {
 		// Apply filtering
 		$this->do_where();
 		$this->do_like();
+		$this->do_order_by();
 		
 		// Set num_rows
 		if( empty( $this->dataArr) ) $this->num_rows = 0;

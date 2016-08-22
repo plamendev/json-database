@@ -19,7 +19,7 @@ $user = array('name' => 'John Doe', 'email' => 'johndoe@example.com');
 $db->insert($user);
 ```
 
-+ Display records
++ Display record(s)
 ```
 $users = $db->get();
 foreach($users as $user)
@@ -46,6 +46,5 @@ $db->delete();
 
 Future Development
 --------------------------------------
-+ Full CRUD implementation
 + Schema definition
 + Optimize speed and file manipulation

@@ -31,7 +31,7 @@ foreach($users as $user)
 ```
 $db->where('name', 'John');
 $db->order_by('DOB', 'DESC');
-$db->get();
+$users = $db->get();
 ```
 + Update record
 ```

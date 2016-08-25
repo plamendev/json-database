@@ -1,4 +1,4 @@
-# json-flat
+# json-database
 An attempt to create flat-file database solution around JSON, inspired by CodeIgniter's ActiveRecord implementation. It is suitable for small web sites.
 
 If you like the idea please contribute to development by forking this project.

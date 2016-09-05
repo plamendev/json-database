@@ -7,6 +7,12 @@ Thank you!
 Usage
 --------------------------------------
 
++ Include class
+
+```
+include_once('db.php');
+```
+
 + Initialise class
 
 ``` 
